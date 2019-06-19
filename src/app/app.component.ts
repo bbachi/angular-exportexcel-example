@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ExportService} from './_services/export.service';
 
 @Component({
@@ -6,56 +6,20 @@ import {ExportService} from './_services/export.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-exportexcel-example';
 
+  customers: any = [];
   constructor(private exportService: ExportService){}
 
-  private _data = [
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
-    { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' }
-  ];
-  public get data() {
-    return this._data;
-  }
-  public set data(value) {
-    this._data = value;
+  ngOnInit() {
+    for (let i = 0; i <= 25; i++) {
+      this.customers.push({firstName: `first${i}`, lastName: `last${i}`,
+      email: `abc${i}@gmail.com`, address: `000${i} street city, ST`, zipcode: `0000${i}`});
+    }
   }
 
   export() {
-    this.exportService.exportExcel(this._data, 'customers');
+    this.exportService.exportExcel(this.customers, 'customers');
   }
 }

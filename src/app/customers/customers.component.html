@@ -6,22 +6,12 @@
       <th scope="col">Last</th>
       <th scope="col">email</th>
       <th scope="col">address</th>
-      <th scope="col">
-        <div class="row">
-          <div class="col-md-6">
-              zipcode
-          </div>
-          <div class="col-md-6">
-              Export
-          </div>
-        </div>
-
-      </th>
+      <th scope="col">zipcode</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cust of customers">
-      <th scope="row">1</th>
+    <tr *ngFor="let cust of customers; let i = index;">
+      <th scope="row">{{i+1}}</th>
       <td>{{cust.firstName}}</td>
       <td>{{cust.lastName}}</td>
       <td>{{cust.email}}</td>
