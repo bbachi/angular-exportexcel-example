@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ExportService} from './_services/export.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-exportexcel-example';
+
+  constructor(private exportService: ExportService){}
 
   private _data = [
     { firstName: 'first', lastName: 'last', email: 'abc@gmail.com', address: '000 street city, ST', zipcode: '00000' },
@@ -50,5 +53,9 @@ export class AppComponent {
   }
   public set data(value) {
     this._data = value;
+  }
+
+  export() {
+    this.exportService.exportExcel(this._data, 'customers');
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {ExportService} from '../_services/export.service';
 
 @Component({
   selector: 'app-customers',
@@ -8,12 +7,10 @@ import {ExportService} from '../_services/export.service';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private exportService: ExportService) { }
+  constructor() { }
 
   @Input() customers: any;
 
-  ngOnInit() {
-    this.exportService.exportAsExcelFile(this.customers, 'customers');
-  }
+  ngOnInit() {}
 
 }
