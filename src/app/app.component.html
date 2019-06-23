@@ -10,7 +10,7 @@
         <h2>Customers </h2>
     </div>
     <div class="col-md-3">
-      <button type="button" (click)="export()" class="btn btn-danger">
+      <button type="button" [appExport]="customers" fileName="customers" class="btn btn-danger">
         Export
       </button>
     </div>

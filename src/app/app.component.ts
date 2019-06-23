@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'angular-exportexcel-example';
 
   customers: any = [];
-  constructor(private exportService: ExportService){}
+  constructor(private exportService: ExportService) {}
 
   ngOnInit() {
     for (let i = 0; i <= 25; i++) {
